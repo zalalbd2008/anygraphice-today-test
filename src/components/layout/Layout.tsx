@@ -176,11 +176,14 @@ const Layout = ({
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
-        <meta name="google-site-verification" content="LTtBuGz5wf-7Ly4rjW7-8YBWLeECfPFF49rOKoN7r34" />
         <meta
           name="google-site-verification"
-          content="EGzXF4NKX_smb9Rs_AjDjfc3oWbHLBXjGeY2aloiQNY"
+          content="LTtBuGz5wf-7Ly4rjW7-8YBWLeECfPFF49rOKoN7r34"
         />
+        {/* <meta
+          name="google-site-verification"
+          content="EGzXF4NKX_smb9Rs_AjDjfc3oWbHLBXjGeY2aloiQNY"
+        /> */}
         <link
           rel="shortcut icon"
           href="/images/favicon.png"
