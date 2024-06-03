@@ -181,7 +181,7 @@ const BlogMain = () => {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-xl-4">
+            {/* <div className="col-12 col-xl-4">
               <div className="blog-main__sidebar">
                 <div className="widget ">
                   <div className="widget__head">
@@ -203,7 +203,7 @@ const BlogMain = () => {
                     </form>
                   </div>
                 </div>
-                <div className="widget ">
+                {/* <div className="widget ">
                   <div className="widget__head">
                     <h5 className="h5">Categories</h5>
                   </div>
@@ -344,9 +344,9 @@ const BlogMain = () => {
                   <Link href="blog-single">
                     <Image src={fourteen} alt="Image" />
                   </Link>
-                </div>
+                </div> 
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>

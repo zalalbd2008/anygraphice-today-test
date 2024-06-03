@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
 const Info = () => {
   return (
@@ -25,7 +25,7 @@ const Info = () => {
                 design and branding.
               </p>
               <div className="section__content-cta">
-                <Link href="contact-us" className="btn btn--primary">
+                <Link href="/contact-us" className="btn btn--primary">
                   contact us
                 </Link>
               </div>

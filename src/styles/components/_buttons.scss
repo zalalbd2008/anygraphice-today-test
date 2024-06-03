@@ -26,7 +26,7 @@
 .btn--primary {
   z-index: 1;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0px;
     right: 0px;
@@ -49,10 +49,10 @@
 
 .btn--secondary {
   z-index: 1;
-  color: var(--white);
+  color: var(--primary-color);
   border: 1px solid #414141;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0px;
     right: 0px;
@@ -83,7 +83,7 @@
   align-items: center;
   text-transform: capitalize;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0px;
     right: 0px;
@@ -136,8 +136,8 @@
     border-radius: 50%;
     overflow: hidden;
     &::after {
-      content: "\f176";
-      font-family: "Font Awesome 6 Pro";
+      content: '\f176';
+      font-family: 'Font Awesome 6 Pro';
       font-weight: 900;
       position: absolute;
       text-align: center;
@@ -158,8 +158,8 @@
 
     &::before {
       position: absolute;
-      content: "\f176";
-      font-family: "Font Awesome 6 Pro";
+      content: '\f176';
+      font-family: 'Font Awesome 6 Pro';
       font-weight: 900;
       text-align: center;
       line-height: 34px;

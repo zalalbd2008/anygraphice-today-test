@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import dawn from "public/images/banner/dawn-light.png";
+import React, { useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import dawn from 'public/images/banner/dawn-light.png';
 
 gsap.registerPlugin(ScrollTrigger);
 const HomeTwoLightBanner = () => {
@@ -11,26 +11,26 @@ const HomeTwoLightBanner = () => {
     const device_width = window.innerWidth;
 
     if (
-      document.querySelectorAll(".banner-two").length > 0 &&
+      document.querySelectorAll('.banner-two').length > 0 &&
       device_width > 576
     ) {
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: ".banner-two",
-          start: "center center",
-          end: "+=100%",
+          trigger: '.banner-two',
+          start: 'center center',
+          end: '+=100%',
           scrub: true,
           pin: false,
         },
       });
 
-      tl.set(".g-ban-one", {
-        y: "-10%",
+      tl.set('.g-ban-one', {
+        y: '-10%',
       });
 
-      tl.to(".imae", {
+      tl.to('.imae', {
         opacity: 0,
-        y: "300%",
+        y: '300%',
 
         duration: 2,
       });
@@ -76,7 +76,7 @@ const HomeTwoLightBanner = () => {
                     <span className="arrow"></span>
                   </div>
                   <div className="cta">
-                    <Link href="contact-us" className="btn btn--tertiary">
+                    <Link href="/contact-us" className="btn btn--tertiary">
                       book a call now
                       <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                     </Link>

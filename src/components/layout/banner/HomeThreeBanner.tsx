@@ -55,13 +55,13 @@ const HomeThreeBanner = () => {
                           <div className="arrow-wrapper d-none d-md-block">
                             <span className="arrow"></span>
                           </div>
-                          <Link
+                          {/* <Link
                             href="our-services"
                             className="btn btn--secondary"
                           >
                             our services
                             <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
-                          </Link>
+                          </Link> */}
                         </div>
                       </div>
                     </div>

@@ -24,12 +24,12 @@ const HomeThreeServicesLight = () => {
                 </div>
                 <div className="col-12 col-lg-4">
                   <div className="text-center text-lg-end">
-                    <Link
+                    {/* <Link
                       href="our-services"
                       className="btn btn--primary text-capitalize"
                     >
                       view all service
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
               </div>

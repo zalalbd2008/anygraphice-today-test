@@ -2,7 +2,81 @@
  --------- (5.0) all sections styles start ---------
  ==== */
 
+// -> popup form
+.popup-shadow {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 111;
+  width: 100%;
+  height: 100vh;
+  background: #02020268;
+}
+.popup-from {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1); /* Start with a small scale */
+  width: 50%;
+  max-width: 500px;
+  min-height: 50vh;
+  background-color: #fff4ed;
+  z-index: 1111;
+  display: block;
+  transition: transform 1s ease;
+  // box-shadow: inset 10px 10px 10px #00000041;
+  /* Slow transition */
+  animation: popup 2s ease forwards; /* Animation to scale from small to big */
+  .icon {
+    font-size: 100px;
+    text-align: ceter;
+  }
+  .input,
+  .textarea {
+    width: 100%;
+    border-radius: 20px;
+    padding: 7px 10px;
+    // background: #e07c42;
+    background: #ef9753;
+    color: #fff;
+    margin: 10px 0px;
+  }
+  .input::placeholder,
+  .textarea::placeholder {
+    color: #fff;
+  }
+}
+@media screen and (max-width: 900px) {
+  .popup-from {
+    width: 100%;
+    height: 97vh;
+  }
+}
+@keyframes popup {
+  from {
+    transform: translate(-50%, -50%) scale(0.1); /* Start with a small scale */
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1); /* Scale to full size */
+  }
+}
+
 // 5.01  agency styles
+.layer {
+  position: relative;
+}
+
+.layer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity as needed */
+}
+
 .agency {
   background-color: var(--tertiary-color);
   z-index: 1;
@@ -14,24 +88,24 @@
     text-align: end;
     z-index: 1;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0px;
       right: 10%;
       width: 40px;
       height: 40px;
-      background-image: url("../../../public/images/agency/dot.png");
+      background-image: url('../../../public/images/agency/dot.png');
       background-size: cover;
       z-index: -1;
     }
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0px;
       left: 0px;
       width: 40px;
       height: 40px;
-      background-image: url("../../../public/images/agency/dot.png");
+      background-image: url('../../../public/images/agency/dot.png');
       background-size: cover;
       z-index: -1;
     }
@@ -46,12 +120,7 @@
       left: 0px;
       max-width: 80%;
     }
-    .thumb-two {
-      margin-top: 100px;
-      z-index: 2;
-      position: relative;
-      max-width: 80%;
-    }
+
   }
 
   .agency__content {
@@ -233,7 +302,7 @@
     z-index: 1;
     overflow: hidden;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       left: 20px;
       bottom: 20px;
@@ -243,7 +312,7 @@
       background-color: var(--primary-color);
     }
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       right: 20px;
       bottom: 20px;
@@ -878,7 +947,7 @@
 
 // 5.10 testimonial two styles
 .testimonial-two {
-  background: url("../../../public/images/testimonial/line.png"),
+  background: url('../../../public/images/testimonial/line.png'),
     var(--tertiary-color);
   background-repeat: no-repeat;
   background-size: contain;
@@ -986,7 +1055,7 @@
     z-index: 1;
     overflow: hidden;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       inset: 0px;
       width: 100%;
@@ -1198,7 +1267,7 @@
 .liner {
   position: relative;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0px;
     right: 0px;
@@ -1235,7 +1304,7 @@
     margin-top: 40px;
     position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 50px;
       left: 0px;
@@ -1249,7 +1318,7 @@
   .single {
     position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 50px;
       left: 0px;
@@ -1308,6 +1377,35 @@
 }
 
 // 5.19 video modal styles
+// section
+
+.left-icon {
+  width: 60px;
+  background: #25d366;
+  top: 60vh;
+  left: 0px;
+  position: fixed;
+  z-index: 1111111;
+  border-radius: 0px 50px 50px 0px;
+  cursor: pointer;
+  a:hover {
+    color: #fff;
+  }
+}
+.left-icon-tow {
+  width: 60px;
+  background: #275bf6;
+  top: 70vh;
+  left: 0px;
+  position: fixed;
+  z-index: 1111111;
+  border-radius: 0px 50px 50px 0px;
+  cursor: pointer;
+  a:hover {
+    color: #fff;
+  }
+}
+
 .video-modal {
   position: relative;
   .modal-bg {
@@ -1406,7 +1504,8 @@
 // 5.21 cta two styles
 .cta-two {
   .cta-two-wrapper {
-    max-width: 1350px;
+    max-width: 1550px;
+    width: 100%;
     padding: 80px 65px;
     background-position: center center;
     background-size: cover;
@@ -1461,8 +1560,8 @@
     .toggle-service-f {
       position: relative;
       &::before {
-        content: "\2b";
-        font-family: "Font Awesome 6 Pro";
+        content: '\2b';
+        font-family: 'Font Awesome 6 Pro';
         position: absolute;
         top: 50%;
         left: 50%;
@@ -1479,8 +1578,8 @@
   .service-f-single-active {
     .toggle-service-f {
       &::before {
-        content: "\f068";
-        font-family: "Font Awesome 6 Pro";
+        content: '\f068';
+        font-family: 'Font Awesome 6 Pro';
         color: var(--primary-color);
         font-size: 18px;
       }
@@ -1600,7 +1699,7 @@
       transition: var(--transition);
 
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         inset: 0px;
         width: 0%;
@@ -1626,7 +1725,7 @@
       line-height: 1.4;
       transition: var(--transition);
       &::after {
-        content: "";
+        content: '';
         position: absolute;
         top: calc(100% + 30px);
         left: 50%;
@@ -2142,7 +2241,7 @@
     z-index: 1;
     padding: 3px 3px 0px 3px;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       inset: 0px;
       width: 100%;
@@ -2265,7 +2364,7 @@
       padding-left: 40px;
       margin-bottom: 0px;
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -2337,8 +2436,8 @@
     .toggle-service-f {
       position: relative;
       &::before {
-        content: "\2b";
-        font-family: "Font Awesome 6 Pro";
+        content: '\2b';
+        font-family: 'Font Awesome 6 Pro';
         position: absolute;
         top: 50%;
         right: 0px;
@@ -2355,8 +2454,8 @@
   .service-f-single-active {
     .toggle-service-f {
       &::before {
-        content: "\f068";
-        font-family: "Font Awesome 6 Pro";
+        content: '\f068';
+        font-family: 'Font Awesome 6 Pro';
         color: var(--primary-color);
         font-size: 18px;
       }
@@ -2527,7 +2626,7 @@
       position: relative;
       padding-left: 20px;
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 50%;
         left: 0px;
@@ -2638,7 +2737,7 @@
         position: relative;
         z-index: 2;
         &::before {
-          content: "";
+          content: '';
           position: absolute;
           top: 50%;
           left: 50%;
@@ -2652,7 +2751,7 @@
           animation: wave 3s linear infinite;
         }
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           top: 50%;
           left: 50%;
@@ -3606,8 +3705,8 @@
 
         &::after {
           color: var(--primary-color);
-          content: "\f068";
-          font-family: "Font Awesome 6 Pro";
+          content: '\f068';
+          font-family: 'Font Awesome 6 Pro';
           transform: rotate(0deg);
         }
       }
@@ -3621,8 +3720,8 @@
         background-color: transparent;
 
         &::after {
-          content: "\2b";
-          font-family: "Font Awesome 6 Pro";
+          content: '\2b';
+          font-family: 'Font Awesome 6 Pro';
           font-weight: 900;
           background-image: none;
           font-size: 16px;
@@ -3879,8 +3978,8 @@ select {
 .drt {
   position: relative;
   &::after {
-    content: "\f107";
-    font-family: "Font Awesome 6 Pro";
+    content: '\f107';
+    font-family: 'Font Awesome 6 Pro';
     font-weight: 900;
     color: white;
     font-size: 20px;
@@ -3890,6 +3989,9 @@ select {
     position: absolute;
   }
 }
+
+
+
 
 /* ==== 
  --------- (5.0) all sections styles end ---------

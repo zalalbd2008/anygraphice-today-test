@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import Image from "next/image";
-import Link from "next/link";
-import logo from "public/images/logo.png";
-import logoLight from "public/images/logo-light.png";
-import Offcanvas from "./Offcanvas";
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
+import logo from 'public/images/any_graphics_today.png';
+import logoLight from 'public/images/any_graphics_today.png';
+import Offcanvas from './Offcanvas';
 
 interface HeaderProps {
   openNav: boolean;
@@ -25,23 +25,23 @@ const Header = ({ openNav, handleNav, setOpenNav }: HeaderProps) => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
-  const defaultClasses = "primary-navbar secondary--navbar";
+  const defaultClasses = 'primary-navbar cmn-nav';
 
   const combinedClasses = `${
-    scrolled ? " navbar-active" : " "
+    scrolled ? ' navbar-active' : ' '
   } ${defaultClasses}`;
 
   let logoSrc = logo;
 
   const router = useRouter();
-  if (router.pathname === "/index-light") {
+  if (router.pathname === '/') {
     logoSrc = logoLight;
   }
 
@@ -55,16 +55,121 @@ const Header = ({ openNav, handleNav, setOpenNav }: HeaderProps) => {
                 <nav className="navbar p-0">
                   <div className="navbar__logo">
                     <Link href="/" aria-label="go to home">
-                      <Image src={logoSrc} alt="Image" priority />
+                      <Image
+                        src={logoSrc}
+                        priority
+                        alt="Image"
+                        className="moble-size-logo"
+                      />
                     </Link>
                   </div>
+                  <div className="navbar__menu">
+                    <ul>
+                      <li className="navbar__item nav-fade">
+                        <Link href="/" className=" pe-3 text-uppercase">
+                          Home
+                        </Link>
+                      </li>
+                      <li className="navbar__item">
+                        <Link href="/about-us" className="pe-1 text-uppercase">
+                          About Us
+                        </Link>
+                      </li>
+
+                      <li className="navbar__item navbar__item--has-children nav-fade">
+                        <button
+                          aria-label="dropdown menu"
+                          className="navbar__dropdown-label"
+                        >
+                          Services
+                        </button>
+                        <ul className="navbar__sub-menu">
+                          <li>
+                            <Link href="/service/brand">
+                              Brand & Identity Design
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/service/marketing">
+                              Advertisement And Marketing Design
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/service/art">
+                              Illustration and Art
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/service/ui">UI/UX Design</Link>
+                          </li>
+                          <li>
+                            <Link href="/service/motion">Motion Graphics</Link>
+                          </li>
+                          <li>
+                            <Link href="/service/publication">
+                              Publication Design
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/service/website">Website Design</Link>
+                          </li>
+                          <li>
+                            <Link href="/service/packageing">
+                              Packaging Design
+                            </Link>
+                          </li>
+                          <li>
+                            <Link href="/service/custom-logo">
+                              Custom Logo Design
+                            </Link>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <li className="navbar__item nav-fade">
+                        <Link href="/portfolio" className="pe-3 text-uppercase">
+                          Portfolio
+                        </Link>
+                      </li>
+
+                      <li className="navbar__item nav-fade">
+                        <Link href="/teams" className="pe-3 text-uppercase">
+                          {' '}
+                          Team Member
+                        </Link>
+                      </li>
+                      <li className="navbar__item nav-fade">
+                        <Link
+                          href="/testimonials"
+                          className="pe-3 text-uppercase"
+                        >
+                          {' '}
+                          Testimonials 
+                        </Link>
+                      </li>
+                      <li className="navbar__item nav-fade">
+                        <Link href="/blog" className="text-uppercase">
+                          Blog 
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
                   <div className="navbar__options">
+                    <div className="navbar__mobile-options d-none d-sm-flex">
+                      <Link href="/contact-us" className="btn btn--secondary">
+                        Let&apos;s Talk
+                      </Link>
+                    </div>
                     <button
-                      className="open-offcanvas-nav d-flex"
+                      className="open-mobile-menu d-flex d-xl-none"
                       aria-label="toggle mobile menu"
-                      title="open offcanvas menu"
                       onClick={handleNav}
-                    ></button>
+                    >
+                      <i className="fa-light fa-bars-staggered"></i>
+                    </button>
+
+                    {/*
+                     */}
                   </div>
                 </nav>
               </div>

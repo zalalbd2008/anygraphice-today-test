@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-const BlogSingleBanner = () => {
+const BlogSingleBanner = ({ hedaer }: any) => {
   return (
     <section
       className="cmn-banner bg-img"
@@ -11,9 +11,7 @@ const BlogSingleBanner = () => {
         <div className="row gaper align-items-center">
           <div className="col-12">
             <div className="text-center text-lg-start">
-              <h2 className="title title-anim">
-                We denounce with righteous indignation
-              </h2>
+              <h2 className="title title-anim">{hedaer}</h2>
               <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">

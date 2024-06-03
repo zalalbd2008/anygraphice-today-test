@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import modalbg from "public/images/modal-bg.png";
+import modalbg from "public/images/modal-bg.jpg";
 import frame from "public/images/video-frame-two.png";
 import YoutubeEmbed from "@/components/youtube/YoutubeEmbed";
 

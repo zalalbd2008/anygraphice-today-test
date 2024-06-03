@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://anygraphicstoday.com/
+
+# Sitemaps
+Sitemap: https://anygraphicstoday.com/sitemap.xml

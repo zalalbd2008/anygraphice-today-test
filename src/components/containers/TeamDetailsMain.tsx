@@ -1,41 +1,41 @@
-import React, { useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import one from "public/images/teams/one.png";
+import React, { useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import one from 'public/images/teams/one.png';
 
 gsap.registerPlugin(ScrollTrigger);
 const TeamDetailsMain = () => {
   useEffect(() => {
-    const percentElements = document.querySelectorAll("[data-percent]");
+    const percentElements = document.querySelectorAll('[data-percent]');
 
-    percentElements.forEach((el) => {
+    percentElements.forEach(el => {
       const skillBarPercent = el.querySelector(
-        ".skill-bar-percent"
+        '.skill-bar-percent'
       ) as HTMLElement | null;
       const percentValue = el.parentNode?.querySelector(
-        ".percent-value"
+        '.percent-value'
       ) as HTMLElement | null;
 
       if (skillBarPercent && percentValue) {
-        const percent = el.getAttribute("data-percent") || "0%";
+        const percent = el.getAttribute('data-percent') || '0%';
         skillBarPercent.style.width = percent;
         percentValue.textContent = percent;
       }
     });
 
-    const axProgressBar = document.querySelectorAll(".skill-bar-single");
-    axProgressBar.forEach((element) => {
+    const axProgressBar = document.querySelectorAll('.skill-bar-single');
+    axProgressBar.forEach(element => {
       const skillBarPercent = element.querySelector(
-        ".skill-bar-percent"
+        '.skill-bar-percent'
       ) as HTMLElement | null;
       const percentValue = element.querySelector(
-        ".percent-value"
+        '.percent-value'
       ) as HTMLElement | null;
 
       if (skillBarPercent && percentValue) {
-        const target = percentValue.textContent || "0%";
+        const target = percentValue.textContent || '0%';
 
         const axBarTimeline = gsap.timeline({
           defaults: {
@@ -59,12 +59,12 @@ const TeamDetailsMain = () => {
         axBarTimeline.from(
           percentValue,
           {
-            textContent: "0%",
+            textContent: '0%',
             snap: {
               textContent: 5,
             },
           },
-          "<"
+          '<'
         );
       }
     });
@@ -110,7 +110,7 @@ const TeamDetailsMain = () => {
                   <p>Senior engineer</p>
                 </div>
                 <div className="intro-right">
-                  <Link href="contact-us" className="btn btn--primary">
+                  <Link href="/contact-us" className="btn btn--primary">
                     Hire Me
                     <i className="fa-sharp fa-solid fa-paper-plane"></i>
                   </Link>

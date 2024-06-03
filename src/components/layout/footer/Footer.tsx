@@ -1,10 +1,29 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import logo from "public/images/logo.png";
+import React, { HtmlHTMLAttributes, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import logo from 'public/images/footer_logo.png';
+// import handler from '@/pages/api/email';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const sendEmail = await fetch('http://localhost:5000', {
+        cache: 'no-cache',
+      });
+
+      const data = await sendEmail.json();
+
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+    // handler()
+  };
+
   return (
     <footer
       className="footer section pb-0"
@@ -15,28 +34,32 @@ const Footer = () => {
           <div className="col-12 col-lg-5 col-xl-6">
             <div className="footer__single">
               <Link href="/" className="logo">
-                <Image src={logo} alt="Image" />
+                <Image src={logo} alt="Image" width={300} />
               </Link>
               <div className="footer__single-meta">
-                <Link
-                  href="https://www.google.com/maps/d/viewer?mid=1UZ57Drfs3SGrTgh6mrYjQktu6uY&hl=en_US&ll=18.672105000000013%2C105.68673800000003&z=17"
-                  target="_blank"
-                >
-                  <i className="fa-sharp fa-solid fa-location-dot"></i>
-                  901 N Pitt Str., Suite 170 Alexandria, USA
-                </Link>
-                <Link href="tel:406-555-0120">
-                  <i className="fa-sharp fa-solid fa-phone-volume"></i>
-                  (406) 555-0120
-                </Link>
-                <Link href="mailto:info@xpovio.com">
-                  <i className="fa-sharp fa-solid fa-envelope"></i>
-                  info@xpovio.com
-                </Link>
+                <div className="row">
+                  <div className="col-12">
+                    <div className="">
+                      <i className="fa-sharp fa-solid fa-location-dot pe-2 pb-sm-1 pb-lg-4"></i>
+                      <span>
+                        Texas, Florida, California, Chicago, New York, Atlanta
+                      </span>
+                    </div>
+                  </div>
+
+                  <Link href="tel:+18884423442" className="col-6">
+                    <i className="fa-sharp fa-solid fa-phone-volume"></i>
+                    +1-888-442-3442
+                  </Link>
+                  <Link href="mailto:info@anygraphicstoday.com">
+                    <i className="fa-sharp fa-solid fa-envelope"></i>
+                    info@anygraphicstoday.com
+                  </Link>
+                </div>
               </div>
               <div className="footer__cta text-start">
-                <Link href="contact-us" className="btn btn--secondary">
-                  book a call now
+                <Link href="/contact-us" className="btn btn--secondary">
+                  Call Designer Now
                 </Link>
               </div>
             </div>
@@ -44,21 +67,25 @@ const Footer = () => {
           <div className="col-12 col-lg-2 col-xl-2">
             <div className="footer__single">
               <div className="footer__single-intro">
-                <h5>discover</h5>
+                <h5>Company</h5>
               </div>
               <div className="footer__single-content">
                 <ul>
                   <li>
-                    <Link href="about-us">About Us</Link>
+                    <Link href="/privacy-policy">Privacy Policy</Link>
                   </li>
                   <li>
-                    <Link href="client-feedback">Award Winning</Link>
+                    <Link href="/advertisement-policy">
+                      Advertisement Policy
+                    </Link>
                   </li>
                   <li>
-                    <Link href="blog">News & Blog</Link>
+                    <Link href="/disclaimer">Disclaimer</Link>
                   </li>
                   <li>
-                    <Link href="contact-us">careers</Link>
+                    <Link href="/terms">
+                      Terms <span className="text-lowercase">of</span> Use
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -71,11 +98,11 @@ const Footer = () => {
               </div>
               <div className="footer__single-content">
                 <p>
-                  Welcome to our digital agency We specialize in helping
-                  business most like yours succeed online.
+                  Welcome to Our Graphic Design Agency! We specialize in
+                  assisting businesses with branding and marketing.
                 </p>
                 <div className="footer__single-form">
-                  <form action="#" method="post">
+                  <form action="#" method="post" onSubmit={handelSubmit}>
                     <div className="input-email">
                       <input
                         type="email"
@@ -100,32 +127,39 @@ const Footer = () => {
               <div className="row align-items-center gaper">
                 <div className="col-12 col-lg-8">
                   <div className="footer__copyright-text text-center text-lg-start">
-                    <p>
+                    <p
+                      style={{
+                        fontSize: '13px',
+                      }}
+                    >
                       Copyright &copy;
-                      <span id="copyYear">{currentYear}</span> Xpovio by{" "}
-                      <Link
-                        
-                        href="https://themeforest.net/user/UltraDevs"
-                        target="_blank"
-                      >
-                        UltraDevs{" "}
-                      </Link>
-                      . All Rights Reserved
+                      <span id="copyYear">{currentYear}</span>
+                      Any Graphics Today . All Rights Reserved. Designed by{' '}
+                      <a href="https://www.fixwebsiteissues.com/">WevTEC.</a> 
                     </p>
                   </div>
                 </div>
                 <div className="col-12 col-lg-4">
                   <div className="social justify-content-center justify-content-lg-end">
-                    <Link href="https://www.facebook.com/" target="_blank">
+                    <Link
+                      href="https://www.facebook.com/AnyGraphicsToday"
+                      target="_blank"
+                    >
                       <i className="fa-brands fa-facebook-f"></i>
                     </Link>
-                    <Link href="https://www.twitter.com/" target="_blank">
+                    <Link
+                      href="https://twitter.com/anygraphics2day"
+                      target="_blank"
+                    >
                       <i className="fa-brands fa-twitter"></i>
                     </Link>
-                    <Link href="https://www.pinterest.com/" target="_blank">
+                    {/* <Link href="https://www.pinterest.com/" target="_blank">
                       <i className="fa-brands fa-linkedin-in"></i>
-                    </Link>
-                    <Link href="https://www.instagram.com/" target="_blank">
+                    </Link> */}
+                    <Link
+                      href="https://www.instagram.com/anygraphicstoday"
+                      target="_blank"
+                    >
                       <i className="fa-brands fa-instagram"></i>
                     </Link>
                   </div>

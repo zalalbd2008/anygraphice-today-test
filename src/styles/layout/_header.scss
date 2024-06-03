@@ -2,6 +2,25 @@
  --------- (4.01) header styles start ---------
  ==== */
 
+// Header logo
+
+@media screen and (max-width: 600px) {
+  .moble-size-logo {
+    width: 150px;
+    object-fit: cover;
+  }
+}
+.moble-size-logo {
+  width: 200px;
+}
+
+@media screen and (min-width: 1400px) {
+  .moble-size-logo {
+    width: 300px;
+    object-fit: cover;
+  }
+}
+
 //  header
 .primary-navbar {
   position: fixed;
@@ -28,12 +47,16 @@
   }
 
   .navbar__item {
-    button,a
-    a {
+    button,
+    a a {
       padding: 41px 20px;
       text-transform: uppercase;
       font-weight: 500;
       width: 100%;
+      color: var(--primary-color);
+    }
+    * {
+      color: var(--primary-color);
     }
   }
 
@@ -65,9 +88,9 @@
     position: relative;
     justify-content: space-between;
     &::after {
-      font-family: "Font Awesome 6 Pro";
+      font-family: 'Font Awesome 6 Pro';
       font-weight: 900;
-      content: "\e093";
+      content: '\e093';
       border: none;
       transition: transform 0.3s ease-in-out;
       font-size: inherit;
@@ -92,7 +115,7 @@
     border-radius: 5px;
     z-index: 9;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: -5px;
       left: 25px;
@@ -122,7 +145,7 @@
       font-size: 14px;
       border-bottom: 1px solid #cecece7a;
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -175,7 +198,7 @@
 
   .open-mobile-menu {
     font-size: 30px;
-    color: var(--white);
+    color: var(--primary-color);
   }
 }
 
@@ -204,7 +227,7 @@
     border: 1px solid #414141;
     position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
@@ -239,7 +262,7 @@
     background-color: #191919;
 
     &::before {
-      content: "Explore Pages";
+      content: 'Explore Pages';
       position: absolute;
       top: 30%;
       right: 10%;
@@ -321,8 +344,8 @@
       .navbar__dropdown-label {
         position: relative;
         &::after {
-          content: "\2b";
-          font-family: "Font Awesome 6 Pro";
+          content: '\2b';
+          font-family: 'Font Awesome 6 Pro';
           position: absolute;
           top: 0px;
           right: 0px;
@@ -347,8 +370,8 @@
     .navbar__item-active {
       color: var(--primary-color) !important;
       &::after {
-        content: "\f068" !important;
-        font-family: "Font Awesome 6 Pro" !important;
+        content: '\f068' !important;
+        font-family: 'Font Awesome 6 Pro' !important;
       }
     }
 
@@ -467,7 +490,7 @@
     background-color: var(--primary-color);
     position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0px;
       bottom: 0px;

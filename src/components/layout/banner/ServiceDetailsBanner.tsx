@@ -1,7 +1,12 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
-const ServiceDetailsBanner = () => {
+interface Header {
+  hedaer: string;
+  breadcrumb ?:string;
+}
+
+const ServiceDetailsBanner = ({ hedaer, breadcrumb }: Header) => {
   return (
     <section
       className="cmn-banner service-single-banner bg-img"
@@ -9,9 +14,16 @@ const ServiceDetailsBanner = () => {
     >
       <div className="container">
         <div className="row gaper align-items-center">
-          <div className="col-12 col-lg-5 col-xl-7">
+          <div className="col-12 col-lg-12 col-xl-12">
             <div className="text-center text-lg-start">
-              <h2 className="title title-anim">Ux Design</h2>
+              <h1
+                className="lh-sm  text-uppercase"
+                style={{
+                  fontSize: '46px',
+                }}
+              >
+                {breadcrumb}
+              </h1>
               <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item">
@@ -20,32 +32,14 @@ const ServiceDetailsBanner = () => {
                       Home
                     </Link>
                   </li>
-                  <li className="breadcrumb-item">
+                  {/* <li className="breadcrumb-item">
                     <Link href="our-services">Our Services</Link>
-                  </li>
+                  </li> */}
                   <li className="breadcrumb-item active" aria-current="page">
-                    Ux Design
+                    {breadcrumb || hedaer}
                   </li>
                 </ol>
               </nav>
-            </div>
-          </div>
-          <div className="col-12 col-lg-7 col-xl-5">
-            <div className="slide-group justify-content-center justify-content-lg-end">
-              <Link
-                href="service-single"
-                aria-label="previous item"
-                className="slide-btn "
-              >
-                <i className="fa-light fa-angle-left"></i>
-              </Link>
-              <Link
-                href="service-single"
-                aria-label="next item"
-                className="slide-btn"
-              >
-                <i className="fa-light fa-angle-right"></i>
-              </Link>
             </div>
           </div>
         </div>

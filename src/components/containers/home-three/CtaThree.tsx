@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
 const CtaThree = () => {
   return (
@@ -25,7 +25,7 @@ const CtaThree = () => {
                 </div>
                 <div className="col-12 col-lg-4">
                   <div className="text-start text-lg-end">
-                    <Link href="contact-us" className="btn btn--tertiary">
+                    <Link href="/contact-us" className="btn btn--tertiary">
                       start a project
                       <i className="fa-sharp fa-solid fa-arrow-up-right"></i>
                     </Link>
