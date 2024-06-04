@@ -17,7 +17,7 @@ export default [
   },
   {
     title: 'Innovative Custom Logo Design Solutions at Any Graphics Today',
-    des: `Utilizing advanced design software such as Adobe Illustrator and Sketch, our expert designers combine creativity with strategic insights and market understanding to deliver innovative and impactful custom logo designs tailored to your brand's unique identity and objectives.`,
+    des: `Offering same day logo design, our graphic design services specialize in cleaning logo design, cleaning company logo design, construction logos, and realtor logos. For high-quality and quick business logo design, look no further than our local service. If you're searching for "logo designer near me," we are ready to meet your needs with professional and efficient solutions.`,
     areaHalfWidth: true,
     workStep: false,
     image: imageOne,
