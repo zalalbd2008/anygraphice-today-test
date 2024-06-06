@@ -259,7 +259,7 @@ const Layout = ({
               href="https://api.whatsapp.com/send/?phone=%2B19792507486&text&type=phone_number&app_absent=0 "
               target="_blank"
             >
-              <i className="fa-brands fa-whatsapp fa-bounce fs-2 px-3 py-3"></i>
+              <i className="fa-brands fa-whatsapp fa-bounce fs-3 px-3 py-3"></i>
             </a>
           </div>
           <div className="left-icon-tow">
@@ -267,12 +267,12 @@ const Layout = ({
               <Image
                 src="/phone.gif"
                 alt="Phone Icon"
-                className="ps-2"
+                className="ps-2 "
                 width={200}
                 height={200}
                 style={{
                   objectFit: 'cover',
-                  width: '40px',
+                  width: '34px',
                 }}
               />
             </a>

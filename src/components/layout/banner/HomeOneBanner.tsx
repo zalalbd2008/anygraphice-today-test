@@ -68,14 +68,45 @@ const HomeOneBanner = () => {
                     brand and captivate your audience with our exceptional
                     graphic design solutions.
                   </p>
-                  <div className="cta section__content-cta">
-                    <div className="single">
-                      <h5 className="fw-7">12+</h5>
-                      <p className="fw-5">years of experience</p>
+                  <div className="cta section__content-cta row ">
+                    <div className="single col-md-5 col-12">
+                      <i
+                        className="fa-solid fa-pen-nib fs-4 d-flex justify-content-start  fw-bold"
+                        style={{
+                          color: '#FF7425',
+                        }}
+                      ></i>
+                      <p className="fw-5 ">Same Day Design & Delivery</p>
                     </div>
-                    <div className="single">
-                      <h5 className="fw-7">2k</h5>
-                      <p className="fw-5">completed projects</p>
+                    <div className="single col-md-5 col-12">
+                      <i
+                        className="fa-solid fa-text-slash fs-5 d-flex justify-content-start fw-bold"
+                        style={{
+                          color: '#FF7425',
+                        }}
+                      ></i>
+
+                      <p className="fw-5 "> No Upfront Charge </p>
+                    </div>
+                    <div className="single col-md-5 col-12">
+                      <i
+                        className="fa-solid fa-file fs-5 d-flex justify-content-start  fw-bold"
+                        style={{
+                          color: '#FF7425',
+                        }}
+                      ></i>
+
+                      <p className="fw-5"> High Resolution Files </p>
+                    </div>
+                    <div className="single col-md-5 col-12">
+                      <i
+                        className="fa-solid fa-handshake fs-5 d-flex justify-content-start  fw-bold"
+                        style={{
+                          color: '#FF7425',
+                        }}
+                      ></i>
+
+                      <p className="fw-5 "> Free Consultation </p>
                     </div>
 
                     <div className="navbar__options pt-3">

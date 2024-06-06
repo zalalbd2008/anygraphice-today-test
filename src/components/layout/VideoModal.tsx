@@ -33,7 +33,7 @@ const VideoModal = () => {
           <source src="/images/popup-video.mp4" type="video/mp4" />
         </video>
 
-        <a
+        {/* <a
           href="tel:+18884423442"
           className="d-flex align-items-center "
           style={{
@@ -52,8 +52,8 @@ const VideoModal = () => {
             }}
           />
 
-          <p className="call-animation">Call Now</p>
-        </a>
+           <p className="call-animation">Call Now</p>
+        </a> */}
       </div>
     </div>
   );
