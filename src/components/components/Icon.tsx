@@ -1,16 +1,16 @@
 "use client"
 
 import Image from 'next/image';
-import { useMedia } from 'react-use';
+
 
 function Icon() {
-  const isWide = useMedia('(min-width: 750px)');
+
   return (
     <>
       <div
         className="left-icon"
         style={{
-          top: isWide ? '84.5vh' : '74vh',
+          bottom: '85px',
         }}
       >
         <div>
@@ -25,7 +25,7 @@ function Icon() {
       <div
         className="left-icon-tow "
         style={{
-          top: isWide ? '91vh' : '82vh',
+          bottom: '25px',
         }}
       >
         <a
