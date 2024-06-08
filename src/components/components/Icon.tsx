@@ -10,7 +10,7 @@ function Icon() {
       <div
         className="left-icon"
         style={{
-          top: isWide ? '84.5vh' : '75vh',
+          top: isWide ? '84.5vh' : '74vh',
         }}
       >
         <div>
@@ -25,7 +25,7 @@ function Icon() {
       <div
         className="left-icon-tow "
         style={{
-          top: isWide ? '91vh' : '83vh',
+          top: isWide ? '91vh' : '82vh',
         }}
       >
         <a
