@@ -27,6 +27,14 @@ import nine from 'public/images/service/brandNine.jpg';
 import ten  from 'public/images/service/brandTen.jpg';
 import eleven from 'public/images/service/brandEleven.jpg';
 import twelve from 'public/images/service/brandTwolve.jpg';
+import Thirteen from 'public/images/service/brandi-13.jpg';
+import Image_14 from 'public/images/service/brandig-14.jpg';
+import Image_15 from 'public/images/service/branding-15.jpg';
+import Image_16 from 'public/images/service/branding-16.jpg';
+import Image_17 from 'public/images/service/branding-17.jpg';
+import Image_18 from 'public/images/service/branding-18.jpg';
+import Image_19 from 'public/images/service/branding-19.jpg';
+import Image_20 from 'public/images/service/branding-20.jpg';
 
 
 const ServiceDetails = () => {
@@ -43,6 +51,14 @@ const ServiceDetails = () => {
       ten,
       eleven,
       twelve,
+      Thirteen,
+      Image_14,
+      Image_15,
+      Image_16,
+      Image_17,
+      Image_18,
+      Image_19,
+      Image_20,
     ];
   return (
     <Layout header={2} footer={1} video={false}>
