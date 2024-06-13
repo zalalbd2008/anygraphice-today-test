@@ -42,7 +42,8 @@ const Subscriber: React.FC<SubscriberProps> = ({
         </Text>
         <Text style={paragraph}>
           you have received a new message from
-          anygraphictoday. A user subscriber you
+          anygraphictoday. A user subscriber you. The
+          subscriber name is {userEmail}
         </Text>
         <Hr style={hr} />
         <Text style={footer}>
