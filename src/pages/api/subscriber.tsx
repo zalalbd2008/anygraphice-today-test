@@ -26,7 +26,10 @@ export default async function handler(
 
     const mailOptions = {
       from: process.env.EMAIL_FROM,
-      to: 'kiamhasan267@gmail.com',
+      to: [
+        'zalalbd@gmail.com ',
+        'info@anygraphicstoday.com',
+      ],
       subject: 'Great news you have new subscriber ✨',
       html: emailHtml,
     };

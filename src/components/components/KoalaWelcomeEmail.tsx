@@ -32,13 +32,13 @@ const KoalaWelcomeEmail: React.FC<
     </Preview>
     <Body style={main}>
       <Container style={container}>
-        <Img
+        {/* <Img
           src={`/static/any_graphics_today.svg`}
           width="170"
           height="50"
           alt="any_graphics_today"
           style={logo}
-        />
+        /> */}
         <Text style={paragraph}>
           Hi, anygraphicstoday team,
         </Text>
