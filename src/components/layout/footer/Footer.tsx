@@ -17,6 +17,7 @@ const Footer = () => {
   ) => {
     e.preventDefault();
 
+    const userEmail = email;
     if (!email) {
       return toast.error('email is required');
     }
