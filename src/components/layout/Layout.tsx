@@ -3,6 +3,7 @@ import React, {
   useState,
   useEffect,
 } from 'react';
+import { Toaster } from 'alert';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
@@ -18,6 +19,7 @@ import ScrollProgressBtn from './ScrollProgressBtn';
 import CustomCursor from './CustomCursor';
 import calculation from '@/lib/calculation';
 import Icon from '@/components/components/Icon';
+import Form from '@/components/components/Form';
 
 const Footer = dynamic(() => import('./footer/Footer'), {
   ssr: false,
@@ -56,22 +58,11 @@ const Layout = ({
     });
   }, []);
 
-  const calculationViaApproveSubmitButton = (e: any) => {
-    const finalNumber =
-      calculation.firstNumber + calculation.secondNumber;
-    const approveSignal = calculation.getCalculation(
-      Number(e.target.value),
-      finalNumber
-    );
-    setButtonApprove(approveSignal);
-  };
+
   // navbar
   const [openNav, setOpenNav] = useState(false);
   const [popupForm, setPopupForm] = useState(false);
   const [popupFormShow, setPopupFormShow] = useState(false);
-  const [username, setUserName] = useState('');
-  const [phoneNumber, setPhonenNumber] = useState('+1');
-  const [message, setMessage] = useState('');
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -88,9 +79,7 @@ const Layout = ({
   };
 
   const router = useRouter();
-  console.log(
-    !router.pathname.includes('/contact-us') && popupForm
-  );
+
   const classMappings: Record<string, string> = {
     '/': 'home-light',
   };
@@ -220,28 +209,33 @@ const Layout = ({
   };
   const handelSubmit = async (e: any) => {
     e.preventDefault();
+    const userFirstname = 'kiam';
+    const to = 'kiamhasan267';
+    const sendWelcomeEmail = async () =>
+      // userFirstname: string,
+      // to: string
+      {
+        const response = await fetch('/api/email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userFirstname, to }),
+        });
 
-    const EMAIL_PORT_API_URL =
-      'https://anygraphicstoday.com/api/v1' as string;
-    try {
-      const sendEmail = await fetch(EMAIL_PORT_API_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: username,
-          phoneNumber,
-          message,
-        }),
-      });
-      console.log(sendEmail);
-    } catch (error) {
-      console.log(error);
-    }
+        const data = await response.json();
+        if (response.ok) {
+          console.log('Email sent successfully:', data);
+        } else {
+          console.error('Error sending email:', data);
+        }
+      };
 
-    router.push('/thank-you');
-    return false;
+    sendWelcomeEmail();
+    console.log('ok');
+
+    // router.push('/thank-you');
+    // return false;
   };
 
   return (
@@ -275,6 +269,7 @@ const Layout = ({
         />
       </Head>
       <div className={combinedClassName}>
+        <Toaster />
         <Header
           openNav={openNav}
           handleNav={handleNav}
@@ -328,99 +323,8 @@ const Layout = ({
                       </p>
                     </div>
                   </div>
-
-                  <form action="" onSubmit={handelSubmit}>
-                    <input
-                      required
-                      className="input"
-                      type="text"
-                      value={username}
-                      onChange={e =>
-                        setUserName(e.target.value)
-                      }
-                      placeholder="Enter Your Name "
-                    />
-                    <input
-                      required
-                      className="input"
-                      type="text"
-                      value={phoneNumber}
-                      onChange={e =>
-                        setPhonenNumber(e.target.value)
-                      }
-                      placeholder="Enter Your Phone Number"
-                    />
-                    <textarea
-                      required
-                      className="textarea"
-                      name=""
-                      placeholder="I Want Disciuss On..."
-                      id=""
-                      rows={5}
-                      value={message}
-                      onChange={e =>
-                        setMessage(e.target.value)
-                      }
-                    ></textarea>
-                    <div className="d-flex justify-content-center align-items-center gap-2 mt-2">
-                      <div>
-                        <span
-                          className="text-black fw-bold "
-                          dangerouslySetInnerHTML={{
-                            __html: calculation.firstNumber,
-                          }}
-                        ></span>
-                      </div>
-                      <div className=" p-3">
-                        <span className="text-black fw-bold ">
-                          +
-                        </span>
-                      </div>
-                      <div>
-                        <span
-                          className="text-black fw-bold "
-                          dangerouslySetInnerHTML={{
-                            __html:
-                              calculation.secondNumber,
-                          }}
-                        ></span>
-                      </div>
-                      <div className=" p-3">
-                        <span className="text-black fw-bold ">
-                          =
-                        </span>
-                      </div>
-                      <div className="mt-1">
-                        <input
-                          onChange={
-                            calculationViaApproveSubmitButton
-                          }
-                          accept="number"
-                          type="text"
-                          className="text-black fw-bold rounded-4 border border-black py-3 px-2  "
-                          style={{
-                            background: 'none',
-                            maxWidth: '100px',
-                            width: '40%',
-                          }}
-                        />
-                      </div>
-                    </div>
-                    <button
-                      disabled={!buttonApprove}
-                      type={'submit'}
-                      className="btn btn--primary  w-75 d-block mt-3 m-auto  py-2  "
-                      style={{
-                        border: !buttonApprove
-                          ? '2px solid #000'
-                          : '',
-                        color: !buttonApprove ? '#000' : '',
-                      }}
-                    >
-                      {' '}
-                      Submit
-                    </button>
-                  </form>
+              
+                <Form />
                 </div>
               </div>
             )}

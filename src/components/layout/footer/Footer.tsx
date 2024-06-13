@@ -1,33 +1,49 @@
-import React, { HtmlHTMLAttributes, useEffect } from 'react';
+import React, {
+  HtmlHTMLAttributes,
+  useEffect,
+  useState,
+} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from 'public/images/footer_logo.png';
-// import handler from '@/pages/api/email';
+import { Toaster, toast } from 'alert';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [email, userEmail] = useState('');
 
-  const handelSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handelSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
     e.preventDefault();
 
-    try {
-      const sendEmail = await fetch('http://localhost:5000', {
-        cache: 'no-cache',
-      });
-
-      const data = await sendEmail.json();
-
-      console.log(data);
-    } catch (error) {
-      console.log(error);
+    if (!email) {
+      return toast.error('email is required');
     }
-    // handler()
+    const response = await fetch('/api/subscriber', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        userEmail,
+      }),
+    });
+
+    if (response.ok) {
+      toast.success('Email sent successfully');
+    } else {
+      toast.error('Error sending email');
+    }
   };
 
   return (
     <footer
       className="footer section pb-0"
-      style={{ backgroundImage: "url('/images/footer/footer-bg.png')" }}
+      style={{
+        backgroundImage:
+          "url('/images/footer/footer-bg.png')",
+      }}
     >
       <div className="container">
         <div className="row gaper">
@@ -42,12 +58,16 @@ const Footer = () => {
                     <div className="">
                       <i className="fa-sharp fa-solid fa-location-dot pe-2 pb-sm-1 pb-lg-4"></i>
                       <span>
-                        Texas, Florida, California, Chicago, New York, Atlanta
+                        Texas, Florida, California, Chicago,
+                        New York, Atlanta
                       </span>
                     </div>
                   </div>
 
-                  <Link href="tel:+18884423442" className="col-6">
+                  <Link
+                    href="tel:+18884423442"
+                    className="col-6"
+                  >
                     <i className="fa-sharp fa-solid fa-phone-volume"></i>
                     +1-888-442-3442
                   </Link>
@@ -58,7 +78,10 @@ const Footer = () => {
                 </div>
               </div>
               <div className="footer__cta text-start">
-                <Link href="/contact-us" className="btn btn--secondary">
+                <Link
+                  href="/contact-us"
+                  className="btn btn--secondary"
+                >
                   Call Designer Now
                 </Link>
               </div>
@@ -72,7 +95,9 @@ const Footer = () => {
               <div className="footer__single-content">
                 <ul>
                   <li>
-                    <Link href="/privacy-policy">Privacy Policy</Link>
+                    <Link href="/privacy-policy">
+                      Privacy Policy
+                    </Link>
                   </li>
                   <li>
                     <Link href="/advertisement-policy">
@@ -80,11 +105,17 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link href="/disclaimer">Disclaimer</Link>
+                    <Link href="/disclaimer">
+                      Disclaimer
+                    </Link>
                   </li>
                   <li>
                     <Link href="/terms">
-                      Terms <span className="text-lowercase">of</span> Use
+                      Terms{' '}
+                      <span className="text-lowercase">
+                        of
+                      </span>{' '}
+                      Use
                     </Link>
                   </li>
                 </ul>
@@ -98,11 +129,16 @@ const Footer = () => {
               </div>
               <div className="footer__single-content">
                 <p>
-                  Welcome to Our Graphic Design Agency! We specialize in
-                  assisting businesses with branding and marketing.
+                  Welcome to Our Graphic Design Agency! We
+                  specialize in assisting businesses with
+                  branding and marketing.
                 </p>
                 <div className="footer__single-form">
-                  <form action="#" method="post" onSubmit={handelSubmit}>
+                  <form
+                    action="#"
+                    method="post"
+                    onSubmit={handelSubmit}
+                  >
                     <div className="input-email">
                       <input
                         type="email"
@@ -110,8 +146,14 @@ const Footer = () => {
                         id="subscribeNews"
                         placeholder="Enter Your Email"
                         required
+                        onChange={e =>
+                          userEmail(e.target.value)
+                        }
                       />
-                      <button type="submit" className="subscribe">
+                      <button
+                        type="submit"
+                        className="subscribe"
+                      >
                         <i className="fa-sharp fa-solid fa-paper-plane"></i>
                       </button>
                     </div>
@@ -133,9 +175,15 @@ const Footer = () => {
                       }}
                     >
                       Copyright &copy;
-                      <span id="copyYear">{currentYear}</span>
-                      Any Graphics Today . All Rights Reserved. Designed by{' '}
-                      <a href="https://www.fixwebsiteissues.com/">WevTEC.</a> 
+                      <span id="copyYear">
+                        {currentYear}
+                      </span>
+                      Any Graphics Today . All Rights
+                      Reserved. Designed by{' '}
+                      <a href="https://www.fixwebsiteissues.com/">
+                        WevTEC.
+                      </a>
+                       
                     </p>
                   </div>
                 </div>

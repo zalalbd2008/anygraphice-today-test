@@ -6,17 +6,18 @@ import mail from 'public/images/mail.png';
 import location from 'public/images/location.png';
 import time from 'public/images/time.png';
 import calculation from '@/lib/calculation';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 const ContactMain = () => {
   const [buttonApprove, setButtonApprove] = useState(false);
   const [userName, setUserName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = useState('+1');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
 
   const calculationViaApproveSubmitButton = (e: any) => {
-    const finalNumber = calculation.firstNumber + calculation.secondNumber;
+    const finalNumber =
+      calculation.firstNumber + calculation.secondNumber;
     const approveSignal = calculation.getCalculation(
       Number(e.target.value),
       finalNumber
@@ -26,36 +27,41 @@ const ContactMain = () => {
   };
 
   // Handeler
-
   const router = useRouter();
+
   const submitHandeler:
     | React.FormEventHandler<HTMLFormElement>
-    | undefined = e => {
+    | undefined = async e => {
     e.preventDefault();
-    const data = new FormData();
-    data.append('name', userName);
-    data.append('phone', phone);
-    data.append('subject', subject);
-    data.append('message', message);
 
-    fetch(process.env.EMAIL_POST as string, {
-      method: 'POST',
-      body: data,
-    })
-      .then(res => res.json())
-      .then(res => {
-        console.log(res);
-        setUserName('');
-        setPhone('');
-        setSubject('');
-        setMessage('');
-        router.push('/thank-you');
-        return 'Thank you';
-      })
-      .catch(err => {
-        console.log(err);
-        return 'Eror';
+    const userFirstname = userName;
+    const userMessage = message;
+    const phoneNumber = phone;
+
+    e.preventDefault();
+    const sendWelcomeEmail = async () => {
+      const response = await fetch('/api/email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userFirstname,
+          phoneNumber,
+          userMessage,
+        }),
       });
+
+      const data = await response.json();
+      if (response.ok) {
+        console.log('Email sent successfully:', data);
+        return router.push('/thank-you');
+      } else {
+        console.error('Error sending email:', data);
+      }
+    };
+
+    await sendWelcomeEmail();
   };
   return (
     <section className="section contact-m fade-wrapper py-1">
@@ -92,7 +98,9 @@ const ContactMain = () => {
                             type="text"
                             name="contact-name"
                             value={userName}
-                            onChange={e => setUserName(e.target.value)}
+                            onChange={e =>
+                              setUserName(e.target.value)
+                            }
                             id="contactName"
                             placeholder="Name"
                           />
@@ -102,29 +110,45 @@ const ContactMain = () => {
                             type="text"
                             name="contact-phone"
                             value={phone}
-                            onChange={e => setPhone(e.target.value)}
+                            onChange={e =>
+                              setPhone(e.target.value)
+                            }
                             id="contactEmail"
                             placeholder="phone"
                           />
                         </div>
                       </div>
-                      <div className="group-input drt">
+                      {/* <div className="group-input drt">
                         <select
                           className="subject"
                           value={subject}
-                          onChange={e => setSubject(e.target.value)}
+                          onChange={e =>
+                            setSubject(e.target.value)
+                          }
                         >
-                          <option data-display="Subject">Subject</option>
-                          <option value="Account">Account</option>
-                          <option value="Service">Service</option>
-                          <option value="Pricing">Pricing</option>
-                          <option value="Support">Support</option>
+                          <option data-display="Subject">
+                            Subject
+                          </option>
+                          <option value="Account">
+                            Account
+                          </option>
+                          <option value="Service">
+                            Service
+                          </option>
+                          <option value="Pricing">
+                            Pricing
+                          </option>
+                          <option value="Support">
+                            Support
+                          </option>
                         </select>
-                      </div>
+                      </div> */}
                       <div className="group-input ">
                         <textarea
                           value={message}
-                          onChange={e => setMessage(e.target.value)}
+                          onChange={e =>
+                            setMessage(e.target.value)
+                          }
                           name="contact-message"
                           id="contactMessage"
                           placeholder="Message"
@@ -135,27 +159,35 @@ const ContactMain = () => {
                           <span
                             className="text-white fw-bold "
                             dangerouslySetInnerHTML={{
-                              __html: calculation.firstNumber,
+                              __html:
+                                calculation.firstNumber,
                             }}
                           ></span>
                         </div>
                         <div className=" p-3">
-                          <span className="text-white fw-bold ">+</span>
+                          <span className="text-white fw-bold ">
+                            +
+                          </span>
                         </div>
                         <div>
                           <span
                             className="text-white fw-bold "
                             dangerouslySetInnerHTML={{
-                              __html: calculation.secondNumber,
+                              __html:
+                                calculation.secondNumber,
                             }}
                           ></span>
                         </div>
                         <div>
-                          <span className="text-white fw-bold ">=</span>
+                          <span className="text-white fw-bold ">
+                            =
+                          </span>
                         </div>
                         <div className="mt-1">
                           <input
-                            onChange={calculationViaApproveSubmitButton}
+                            onChange={
+                              calculationViaApproveSubmitButton
+                            }
                             accept="number"
                             type="text"
                             className="text-white fw-bold rounded-4 border py-3 px-2  "
@@ -168,19 +200,21 @@ const ContactMain = () => {
                         </div>
                       </div>
                       <div className="form-cta d-flex justify-content-center">
-                        <Link href="/thank-you">
-                          <button
-                            disabled={!buttonApprove}
-                            style={{
-                              border: !buttonApprove ? '2px solid #fff' : '',
-                              color: !buttonApprove ? '#fff' : '',
-                            }}
-                            type="submit"
-                            className="btn btn--primary"
-                          >
-                            Send Message
-                          </button>
-                        </Link>
+                        <button
+                          disabled={!buttonApprove}
+                          style={{
+                            border: !buttonApprove
+                              ? '2px solid #fff'
+                              : '',
+                            color: !buttonApprove
+                              ? '#fff'
+                              : '',
+                          }}
+                          type="submit"
+                          className="btn btn--primary"
+                        >
+                          Send Message
+                        </button>
                       </div>
                     </form>
                   </div>
@@ -198,7 +232,9 @@ const ContactMain = () => {
               <div className="content">
                 <h4>Phone</h4>
                 <p>
-                  <Link href="tel:+18884423442">+1-888-442-3442</Link>
+                  <Link href="tel:+18884423442">
+                    +1-888-442-3442
+                  </Link>
                 </p>
                 {/* <p>
                   <Link href="tel:197-90-56-780">Fax : +18882073469</Link>
@@ -235,8 +271,8 @@ const ContactMain = () => {
                 <h4>Service Coverage</h4>
                 <p>
                   <Link href="#">
-                    Texas, Florida, California, Chicago, New York, Atlanta and
-                    Other US States
+                    Texas, Florida, California, Chicago, New
+                    York, Atlanta and Other US States
                   </Link>
                 </p>
               </div>
